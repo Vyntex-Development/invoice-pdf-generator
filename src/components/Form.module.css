@@ -1,0 +1,155 @@
+.Form {
+  width: 42vw;
+  max-width: 808px;
+  height: 100vh;
+  background-color: rgba(32, 32, 32, 1);
+  padding-right: 104px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 104px;
+}
+
+.Form h1 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 90%;
+  text-transform: uppercase;
+  color: #f1f1f1;
+  margin-bottom: 40px;
+}
+
+.Logo {
+  position: absolute;
+  top: 40px;
+}
+
+.Form label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: #f1f1f1;
+  margin-bottom: 8px;
+}
+
+.Form form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.HalfWidth,
+.FullWidth {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.TwoCol {
+  display: flex;
+  justify-content: space-between;
+}
+
+.InputWrapper,
+.TwoCol {
+  width: 100%;
+}
+.InputWrapper input,
+.TwoCol input {
+  margin-bottom: 24px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  background: #2a2a2a;
+  padding: 16px;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #f1f1f1;
+  font-size: 16px;
+}
+
+.Button {
+  width: 100%;
+  height: 51px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  color: #121212;
+  background: #f1f1f1;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.TwoCol input::placeholder,
+.InputWrapper input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  color: #c4c4c4;
+}
+
+.TwoCol input::placeholder {
+  text-transform: uppercase;
+}
+
+.TwoCol > div:nth-of-type(1) {
+  margin-right: 16px;
+}
+
+.CountryDropdownWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 23px;
+  position: relative;
+}
+
+.Dropdown {
+  max-height: 300px;
+  width: 100%;
+  z-index: 3;
+  overflow-y: scroll;
+  position: absolute;
+  top: 80px;
+  cursor: pointer;
+}
+
+.Dropdown ul {
+  color: white;
+  list-style: none;
+  text-align: left;
+  background-color: #2a2a2a;
+  margin: 0;
+  padding: 32px 0;
+}
+
+.Dropdown ul li {
+  margin-bottom: 8px;
+  cursor: pointer;
+  padding: 8px 32px;
+}
+
+.Dropdown ul li:hover {
+  background-color: #121212;
+}
+
+.DropdownSelectInitial,
+.DropdownSelected {
+  background-color: #2a2a2a;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.DropdownSelectInitial {
+  color: #c4c4c4;
+}
+
+.DropdownSelected {
+  color: #f1f1f1;
+}
