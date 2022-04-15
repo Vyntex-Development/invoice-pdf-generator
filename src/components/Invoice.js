@@ -1,8 +1,6 @@
 import classes from "./Invoice.module.css";
-import LogoDark from "../images/LogoDark";
 import { useEffect, useRef } from "react";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
+import LogoDark from "../images/LogoDark";
 
 const Invoice = ({ data, isSubmited, onSubmit }) => {
   const invoiceRef = useRef();
@@ -13,20 +11,6 @@ const Invoice = ({ data, isSubmited, onSubmit }) => {
     country,
     address,
   } = data ? data : {};
-
-  const generateInvoice = () => {
-    html2canvas(invoiceRef.current).then((canvas) => {
-      console.log(invoiceRef.current);
-      invoiceRef.current.style.transform = "scale(4)";
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF();
-      var width = pdf.internal.pageSize.getWidth();
-      var height = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, "PNG", 0, 0, width, height);
-      pdf.save("download.pdf");
-      // invoiceRef.current.style.transform = "scale(1)";
-    });
-  };
 
   useEffect(() => {
     if (isSubmited) {

@@ -1,6 +1,7 @@
 .Invoice {
   background-color: #f8f8f8;
   height: calc(100vh - 58px);
+  /* height: 100vh; */
   margin: auto;
   width: 100%;
   max-width: 595px;
