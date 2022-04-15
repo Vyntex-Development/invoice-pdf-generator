@@ -6,6 +6,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Helvetica Neue";
 }
 
 body {
@@ -31,4 +32,17 @@ input:-webkit-autofill:active {
 
 .flex {
   display: flex;
+}
+
+document {
+  width: 595px;
+  margin: auto;
+  height: 95vh;
+}
+
+page {
+  width: 595px;
+  margin: auto;
+  height: 95vh;
+  display: block;
 }
