@@ -37,6 +37,12 @@ const PaymentInstruction = () => {
       fontSize: "11px",
       width: "33%",
     },
+    colAuto: {
+      display: "flex",
+      flexDirection: "column",
+      fontSize: "11px",
+      width: "50%",
+    },
     textPadding: {
       paddingLeft: "10%",
       display: "flex",
@@ -44,7 +50,6 @@ const PaymentInstruction = () => {
       justifyContent: "space-between",
     },
     textBold: {
-      // fontFamily: "Helvetica-Custom-Bold",
       marginBottom: "4px",
       fontWeight: "bold",
     },
@@ -56,9 +61,18 @@ const PaymentInstruction = () => {
   return (
     <View style={styles.paymentInstructionsWrapper}>
       <View style={styles.sectionWrapperLeft}>
-        <View style={{ marginBottom: "8px", fontWeight: "bold" }}>
+        <View
+          style={{
+            marginBottom: "8px",
+            fontWeight: "bold",
+            fontFamily: "Helvetica-Custom-Bold",
+          }}
+        >
           <Text> PAYMENT</Text>
-          <Text> INSTUCTIONS</Text>
+          <Text>
+            <br />
+            INSTRUCTIONS
+          </Text>
         </View>
 
         <Text style={styles.textSmallWithMargin}>
@@ -72,13 +86,29 @@ const PaymentInstruction = () => {
       </View>
       <View style={styles.sectionWrapperRight}>
         <View style={styles.col}>
-          <Text style={styles.textBold}>Bank name:</Text>
+          <View
+            style={{
+              marginBottom: "4px",
+              fontWeight: "bold",
+              fontFamily: "Helvetica-Custom-Bold",
+            }}
+          >
+            <Text style={styles.textBold}>Bank name:</Text>
+          </View>
           <Text style={styles.textMargin}>Banca Intesa A.D.</Text>
           <Text>Beograd</Text>
         </View>
-        <View style={styles.col}>
+        <View style={styles.colAuto}>
           <View style={styles.textPadding}>
-            <Text style={styles.textBold}>Account number:</Text>
+            <View
+              style={{
+                marginBottom: "4px",
+                fontWeight: "bold",
+                fontFamily: "Helvetica-Custom-Bold",
+              }}
+            >
+              <Text style={styles.textBold}>Account number:</Text>
+            </View>
             <Text>160-6000000036927-42</Text>
           </View>
         </View>

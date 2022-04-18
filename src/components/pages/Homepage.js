@@ -1,33 +1,24 @@
 import Form from "../Form";
 import Pdf from "../invoice/Pdf";
-// import Invoice from "../Invoice";
 import React, { useState, useEffect } from "react";
-
-// const [isSubmited, setIsSubmited] = useState(false);
-// const [data, setData] = useState(null);
+import { PDFViewer } from "@react-pdf/renderer";
 
 const HomePage = (props) => {
   const [isClient, setIsClient] = useState(false);
+  const [pdfData, setPdfData] = useState({});
+
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // const onSubmitFormHandler = (data) => {
-  //   setData(data);
-  //   setIsSubmited(true);
-  // };
-
-  // const onSubmitHandler = () => {
-  //   setIsSubmited(false);
-  // };
+  const forwardFormDataHandler = (data) => {
+    setPdfData(data);
+  };
 
   return (
     <div className="flex">
-      {/* <Form onSubmitForm={onSubmitFormHandler} /> */}
-      <Form />
-      {isClient && <Pdf />}
-
-      {/* <Invoice isSubmited={isSubmited} data={data} onSubmit={onSubmitHandler} /> */}
+      <Form forwardFormData={forwardFormDataHandler} />
+      {isClient && <Pdf pdfData={pdfData} />}
     </div>
   );
 };

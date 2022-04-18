@@ -1,19 +1,9 @@
 import PDFDocument from "./PDFDocument";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-const Pdf = () => {
+const Pdf = ({ pdfData }) => {
   return (
     <>
-      <PDFDocument />
-      <div className="download-link">
-        <PDFDownloadLink document={<PDFDocument />} fileName="pdf">
-          {({ blob, url, loading, error }) =>
-            loading ? "Loading..." : "Download Invoice"
-          }
-        </PDFDownloadLink>
-      </div>
+      <PDFDocument pdfData={pdfData} />
     </>
-
-    // </PDFViewer>
   );
 };
 

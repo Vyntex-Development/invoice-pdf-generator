@@ -1,14 +1,11 @@
-import { Page, Document, StyleSheet, Font } from "@react-pdf/renderer";
-import { useState } from "react";
+import { Page, StyleSheet, Font, Document } from "@react-pdf/renderer";
 import InvoiceDescription from "./InvoiceDescription";
 import InvoiceDetails from "./InvoiceDetails";
 import InvoiceFooter from "./InvoiceFooter";
 import InvoiceHeader from "./InvoiceHeader";
 import InvoiceInstructions from "./InvoiceInstructions";
 
-const font1 = "https://fonts.cdnfonts.com/s/29136/Helvetica65Medium_22443.woff";
-const fontBold =
-  "https://fonts.cdnfonts.com/s/29136/Helvetica85Heavy_22449.woff";
+const font1 = "https://fonts.cdnfonts.com/s/29136/Helvetica55Roman_22439.woff";
 
 Font.register({
   family: "Helvetica-Custom",
@@ -16,30 +13,15 @@ Font.register({
   type: "woff",
 });
 
-Font.register({
-  family: "Helvetica-Custom-Bold",
-  fonts: [{ src: fontBold }],
-  type: "woff",
-});
-
-// let fontsLoaded = false;
-// let forceUpdate = null;
-
-// Promise.all([
-//   Font.load({ fontFamily: "Helvetica-Custom" }),
-//   Font.load({ fontFamily: "Helvetica-Custom-Bold" }),
-// ]).then(() => {
-//   fontsLoaded = true;
-//   if (forceUpdate) forceUpdate();
-// });
-
 const styles = StyleSheet.create({
   page: {
     fontFamily: "Helvetica-Custom",
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
+    padding: "14px 32px",
+    paddingLeft: 32,
+    paddingBottom: 14,
+    paddingTop: 14,
+    paddingRight: 32,
+    display: "flex",
     flexDirection: "column",
     border: "none",
     overflow: "auto",
@@ -48,22 +30,22 @@ const styles = StyleSheet.create({
   },
 });
 
-const PDFDocument = () => {
-  // function useForceUpdate() {
-  //   const [value, setValue] = useState(0);
-  //   return () => setValue((value) => value + 1);
-  // }
-
-  // forceUpdate = useForceUpdate();
-  // if (!fontsLoaded) {
-  //   return <div />;
-  // }
+const PDFDocument = ({ pdfData }) => {
+  const { billTo, dateIssued, dateDueIssued, address, country } = pdfData
+    ? pdfData
+    : {
+        billTo: "",
+        dateIssued: "",
+        dateDueIssued: "",
+        country: "",
+        address: "",
+      };
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <InvoiceHeader />
-        <InvoiceDetails />
+        <InvoiceHeader dateIssued={dateIssued} dateDueIssued={dateDueIssued} />
+        <InvoiceDetails billTo={billTo} address={address} country={country} />
         <InvoiceDescription />
         <InvoiceInstructions />
         <InvoiceFooter />

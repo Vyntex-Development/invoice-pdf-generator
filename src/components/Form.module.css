@@ -46,6 +46,7 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  position: relative;
 }
 
 .TwoCol {
@@ -77,10 +78,18 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 120%;
-  color: #121212;
   background: #f1f1f1;
   cursor: pointer;
   text-transform: uppercase;
+}
+
+.Button a {
+  color: #121212;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
 }
 
 .TwoCol input::placeholder,
@@ -152,4 +161,11 @@
 
 .DropdownSelected {
   color: #f1f1f1;
+}
+
+.Error {
+  color: #b94d4d;
+  position: absolute;
+  font-size: 12px;
+  bottom: 4px;
 }

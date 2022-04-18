@@ -1,16 +1,22 @@
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Text, View, StyleSheet, Font } from "@react-pdf/renderer";
+const fontBold = "https://fonts.cdnfonts.com/s/29136/HelveticaNeueBold.woff";
 
-const InvoiceHeader = ({ fontFamily }) => {
+Font.register({
+  family: "Helvetica-Custom-Bold",
+  fonts: [{ src: fontBold, fontWeight: "bold" }],
+  type: "woff",
+});
+
+const InvoiceHeader = ({ dateIssued, dateDueIssued }) => {
   const styles = StyleSheet.create({
     headerWrapper: {
       display: "flex",
       flexDirection: "row",
       borderBottom: "1px solid #202020",
       paddingBottom: "9px",
-      backgroundColor: "#F8F8F8",
-      paddingTop: "14px",
     },
     headerWrapperLeft: {
+      fontFamily: "Helvetica-Custom-Bold",
       width: "39%",
     },
     headerWrapperRight: {
@@ -20,7 +26,6 @@ const InvoiceHeader = ({ fontFamily }) => {
       justifyContent: "space-between",
     },
     headerTextBold: {
-      // fontFamily: "Helvetica-Custom-Bold",
       fontSize: "16px",
       textTransform: "uppercase",
       color: "#202020",
@@ -31,11 +36,11 @@ const InvoiceHeader = ({ fontFamily }) => {
       flexDirection: "column",
       fontSize: "8px",
       width: "33.3%",
-      fontWeight: "bold",
     },
     headerColWrapperTextTop: {
       fontSize: "8px",
-      // fontFamily: "Helvetica-Custom-Bold",
+      fontFamily: "Helvetica-Custom-Bold",
+      fontWeight: "bold",
     },
     textPadding: {
       paddingLeft: "10%",
@@ -44,6 +49,7 @@ const InvoiceHeader = ({ fontFamily }) => {
     },
     fontWeightNormal: {
       fontWeight: "400",
+      fontFamily: "Helvetica-Custom",
     },
   });
 
@@ -54,19 +60,32 @@ const InvoiceHeader = ({ fontFamily }) => {
       </View>
       <View style={styles.headerWrapperRight}>
         <View style={styles.headerColWrapper}>
-          <Text style={styles.headerColWrapperTextTop}>INVOICE NUMBER:</Text>
-          <Text style={styles.fontWeightNormal}>[XXXXXXXX]</Text>
-        </View>
-        <View style={styles.headerColWrapper}>
-          <View style={styles.textPadding}>
-            <Text style={styles.headerColWrapperTextTop}>DATE ISSUED:</Text>
-            <Text style={styles.fontWeightNormal}> DD/MM/YYYY</Text>
+          <View style={styles.headerColWrapperTextTop}>
+            <Text>INVOICE NUMBER:</Text>
+          </View>
+          <View style={styles.fontWeightNormal}>
+            <Text>[XXXXXXXX]</Text>
           </View>
         </View>
         <View style={styles.headerColWrapper}>
           <View style={styles.textPadding}>
-            <Text style={styles.headerColWrapperTextTop}>DUE DATE:</Text>
-            <Text style={styles.fontWeightNormal}>DD/MM/YYYY</Text>
+            <View style={styles.headerColWrapperTextTop}>
+              <Text>DATE ISSUED:</Text>
+            </View>
+            <View style={styles.fontWeightNormal}>
+              <Text>{dateIssued ? dateIssued : "DD/MM/YYYY"}</Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.headerColWrapper}>
+          <View style={styles.textPadding}>
+            <View style={styles.headerColWrapperTextTop}>
+              <Text>DUE DATE:</Text>
+            </View>
+
+            <View style={styles.fontWeightNormal}>
+              <Text>{dateDueIssued ? dateDueIssued : "DD/MM/YYYY"} </Text>
+            </View>
           </View>
         </View>
       </View>

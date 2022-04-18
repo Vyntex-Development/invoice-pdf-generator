@@ -1,4 +1,12 @@
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Text, View, StyleSheet, Font } from "@react-pdf/renderer";
+
+const fontBold = "https://fonts.cdnfonts.com/s/29136/HelveticaNeueBold.woff";
+
+Font.register({
+  family: "Helvetica-Custom-Bold",
+  fonts: [{ src: fontBold, fontWeight: "bold" }],
+  type: "woff",
+});
 
 const InvoiceDescription = () => {
   const styles = StyleSheet.create({
@@ -14,7 +22,7 @@ const InvoiceDescription = () => {
     sectionWrapperRight: {
       width: "61%",
       fontWeight: "bold",
-      // fontFamily: "Helvetica-Custom-Bold",
+      fontFamily: "Helvetica-Custom-Bold",
     },
     sectionWrapperLeft: {
       width: "39%",
@@ -48,9 +56,15 @@ const InvoiceDescription = () => {
   return (
     <View style={styles.invoiceDescriptionWrapper}>
       <View style={styles.sectionWrapperLeft}>
-        <Text style={{ marginBottom: "8px", fontWeight: "bold" }}>
-          DESCRIPTION
-        </Text>
+        <View
+          style={{
+            marginBottom: "8px",
+            fontWeight: "bold",
+            fontFamily: "Helvetica-Custom-Bold",
+          }}
+        >
+          <Text>DESCRIPTION</Text>
+        </View>
         <Text style={styles.textSmallWithMargin}>
           Currency: GBP EUR/RSD: 1/117,65
         </Text>
