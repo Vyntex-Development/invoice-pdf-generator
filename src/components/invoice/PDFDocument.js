@@ -31,21 +31,18 @@ const styles = StyleSheet.create({
 });
 
 const PDFDocument = ({ pdfData }) => {
-  const { billTo, dateIssued, dateDueIssued, address, country } = pdfData
-    ? pdfData
-    : {
-        billTo: "",
-        dateIssued: "",
-        dateDueIssued: "",
-        country: "",
-        address: "",
-      };
-
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <InvoiceHeader dateIssued={dateIssued} dateDueIssued={dateDueIssued} />
-        <InvoiceDetails billTo={billTo} address={address} country={country} />
+        <InvoiceHeader
+          dateIssued={pdfData.dateIssued}
+          dateDueIssued={pdfData.dateDueIssued}
+        />
+        <InvoiceDetails
+          billTo={pdfData.billTo}
+          address={pdfData.address}
+          country={pdfData.country}
+        />
         <InvoiceDescription />
         <InvoiceInstructions />
         <InvoiceFooter />
