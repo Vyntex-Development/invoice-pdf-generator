@@ -1,7 +1,6 @@
 import Form from "../Form";
 import Pdf from "../invoice/Pdf";
 import React, { useState, useEffect } from "react";
-import { PDFViewer } from "@react-pdf/renderer";
 
 const HomePage = (props) => {
   const [isClient, setIsClient] = useState(false);

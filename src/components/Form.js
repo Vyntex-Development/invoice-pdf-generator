@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useRef, useState, useEffect } from "react";
 import Logo from "../images/Logo";
-// import { saveAs } from "file-saver";
+import { saveAs } from "file-saver";
 import { PDFDownloadLink, pdf } from "@react-pdf/renderer";
 import { countryListAllIsoData } from "../countries/countries";
 import PDFDocument from "./invoice/PDFDocument";
@@ -25,7 +25,7 @@ const formattedDate = (date, setError) => {
   return `${day}/${month}/${year}`;
 };
 
-const Form = ({ forwardFormData }) => {
+const Form = ({ forwardFormData, props }) => {
   const dateIssuedRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const [billTo, setBillTo] = useState(null);
@@ -41,6 +41,13 @@ const Form = ({ forwardFormData }) => {
   const [selectedDateDueIssued, setSelectedDateDueIssued] = useState(null);
 
   const [isClient, setIsClient] = useState(false);
+
+  const delay = (t) => new Promise((resolve) => setTimeout(resolve, t));
+
+  async function getProps() {
+    await delay(1_000);
+    return formData;
+  }
 
   useEffect(() => {
     setIsClient(true);
@@ -227,32 +234,19 @@ const Form = ({ forwardFormData }) => {
             <span className={classes.Error}>{addressError}</span>
           </div>
         </div>
-        {isClient && (
-          <PDFDownloadLink
-            document={<PDFDocument />}
-            fileName={"something.pdf"}
-          >
-            {({ blob, url, loading, error }) =>
-              loading ? "Loading..." : "Download Invoice"
-            }
-          </PDFDownloadLink>
-        )}
-        {/* <button
+        <button
           className={classes.Button}
           onClick={async () => {
-            // const props = await getProps();
-            const doc = <Pdf />;
+            const props = await getProps();
+            const doc = <PDFDocument pdfData={props} />;
             const asPdf = pdf([]); // {} is important, throws without an argument
             asPdf.updateContainer(doc);
             const blob = await asPdf.toBlob();
-            if (Object.values(formData).some((val) => val === "")) {
-              return;
-            }
             saveAs(blob, "document.pdf");
           }}
         >
-          Next Step
-        </button> */}
+          NEXT STEP
+        </button>
       </form>
     </div>
   );
